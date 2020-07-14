@@ -7,4 +7,6 @@ public interface ReviewService {
     void add(Review review);
 
     void addAll(List<Review> reviews);
+
+    List<String> findMostUsedWords(int pageLimit);
 }
