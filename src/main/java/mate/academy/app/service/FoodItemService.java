@@ -7,4 +7,6 @@ public interface FoodItemService {
     void add(FoodItem foodItem);
 
     void addAll(List<FoodItem> foodItems);
+
+    List<FoodItem> findMostCommentedItems(int pageLimit, int offset);
 }

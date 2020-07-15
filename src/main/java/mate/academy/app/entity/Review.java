@@ -14,7 +14,6 @@ import lombok.Data;
 @Data
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
     @ManyToOne
@@ -29,6 +28,6 @@ public class Review {
     private Long time;
     @Column(name = "summary")
     private String reviewSummary;
-    @Column(name = "text")
+    @Column(length = 50000, columnDefinition = "text")
     private String reviewText;
 }
