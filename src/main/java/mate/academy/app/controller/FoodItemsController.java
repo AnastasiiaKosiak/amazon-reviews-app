@@ -21,7 +21,7 @@ public class FoodItemsController {
         this.foodItemService = foodItemService;
     }
 
-    @GetMapping
+    @GetMapping("/most-commented")
     public List<FoodItemDto> getMostCommentedFoodItems(@RequestParam int pageLimit, @RequestParam int offset) {
        return foodItemService.findMostCommentedItems(pageLimit, offset)
                .stream()

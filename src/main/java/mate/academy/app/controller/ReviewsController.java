@@ -16,7 +16,7 @@ public class ReviewsController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping
+    @GetMapping("/popular-words")
     List<String> getMostUserWordsFromReviews(@RequestParam int pageLimit) {
         return reviewService.findMostUsedWords(pageLimit);
     }

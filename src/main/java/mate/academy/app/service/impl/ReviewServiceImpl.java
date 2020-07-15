@@ -1,6 +1,10 @@
 package mate.academy.app.service.impl;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import mate.academy.app.entity.Review;
 import mate.academy.app.repository.ReviewRepository;
@@ -10,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
-    private static final String REGEX = "[^a-z]+";
+    private static final String NON_LETTER_REGEX = "[^a-z]+";
 
     public ReviewServiceImpl(ReviewRepository reviewRepository) {
         this.reviewRepository = reviewRepository;
@@ -31,7 +35,7 @@ public class ReviewServiceImpl implements ReviewService {
         List<String> allReviews = reviewRepository.findAllReviews()
                 .stream()
                 .map(String::toLowerCase)
-                .flatMap(text -> Arrays.stream(text.split(REGEX)))
+                .flatMap(text -> Arrays.stream(text.split(NON_LETTER_REGEX)))
                 .collect(Collectors.toList());
         return processReviewTexts(allReviews, pageLimit);
     }

@@ -23,7 +23,7 @@ public class UsersController {
         this.userMapper = userMapper;
     }
 
-    @GetMapping
+    @GetMapping("/most-active")
     public List<UserDto> getMostActiveUsers(@RequestParam int pageLimit, @RequestParam int offset) {
         return userService.findMostActiveUsers(pageLimit, offset)
                 .stream()
