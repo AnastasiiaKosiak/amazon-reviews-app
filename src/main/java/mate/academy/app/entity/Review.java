@@ -2,8 +2,6 @@ package mate.academy.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,6 +16,8 @@ public class Review {
     private Long reviewId;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private AmazonUser amazonUser;
     @ManyToOne
     private FoodItem item;
     @Column(name = "helpfulness_num")

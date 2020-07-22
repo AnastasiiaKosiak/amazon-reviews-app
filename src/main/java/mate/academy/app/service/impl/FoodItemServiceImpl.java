@@ -16,8 +16,8 @@ public class FoodItemServiceImpl implements FoodItemService {
     }
 
     @Override
-    public void add(FoodItem foodItem) {
-        foodItemRepository.save(foodItem);
+    public FoodItem add(FoodItem foodItem) {
+        return foodItemRepository.save(foodItem);
     }
 
     @Override
@@ -29,5 +29,10 @@ public class FoodItemServiceImpl implements FoodItemService {
     public List<FoodItem> findMostCommentedItems(int pageLimit, int offset) {
         PageRequest pageRequest = PageRequest.of(pageLimit, offset);
         return foodItemRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public FoodItem findById(String id) {
+        return foodItemRepository.findById(id).get();
     }
 }
