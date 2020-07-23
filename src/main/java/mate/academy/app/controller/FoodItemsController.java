@@ -2,6 +2,8 @@ package mate.academy.app.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import lombok.AllArgsConstructor;
 import mate.academy.app.entity.dto.FoodItemDto;
 import mate.academy.app.mapper.FoodItemMapper;
 import mate.academy.app.service.FoodItemService;
@@ -12,14 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/items")
+@AllArgsConstructor
 public class FoodItemsController {
     private final FoodItemMapper mapper;
     private final FoodItemService foodItemService;
-
-    public FoodItemsController(FoodItemMapper mapper, FoodItemService foodItemService) {
-        this.mapper = mapper;
-        this.foodItemService = foodItemService;
-    }
 
     @GetMapping("/most-commented")
     public List<FoodItemDto> getMostCommentedFoodItems(@RequestParam int pageLimit, @RequestParam int offset) {

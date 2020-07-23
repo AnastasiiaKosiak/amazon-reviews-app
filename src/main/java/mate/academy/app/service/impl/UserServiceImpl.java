@@ -4,7 +4,6 @@ import java.util.List;
 import mate.academy.app.entity.User;
 import mate.academy.app.repository.UserRepository;
 import mate.academy.app.service.UserService;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +15,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(User user) {
-        userRepository.save(user);
+    public User add(User user) {
+        return userRepository.save(user);
     }
 
     @Override
@@ -26,8 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findMostActiveUsers(int pageLimit, int offset) {
-        PageRequest pageRequest = PageRequest.of(pageLimit, offset);
-        return userRepository.findAll(pageRequest);
+    public User findByName(String name) {
+        return userRepository.findByName(name);
     }
+
 }

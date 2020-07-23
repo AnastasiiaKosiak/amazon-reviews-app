@@ -21,8 +21,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public void add(Review review) {
-        reviewRepository.save(review);
+    public Review add(Review review) {
+        return reviewRepository.save(review);
     }
 
     @Override
@@ -38,6 +38,16 @@ public class ReviewServiceImpl implements ReviewService {
                 .flatMap(text -> Arrays.stream(text.split(NON_LETTER_REGEX)))
                 .collect(Collectors.toList());
         return processReviewTexts(allReviews, pageLimit);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        reviewRepository.findById(id).get();
+    }
+
+    @Override
+    public Review search(String name, String summary) {
+        return null;
     }
 
     private List<String> processReviewTexts(List<String> text, int limit) {
