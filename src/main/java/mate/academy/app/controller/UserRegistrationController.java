@@ -1,5 +1,6 @@
 package mate.academy.app.controller;
 
+import lombok.AllArgsConstructor;
 import mate.academy.app.entity.User;
 import mate.academy.app.entity.dto.RegistrationDto;
 import mate.academy.app.mapper.UserMapper;
@@ -9,15 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@AllArgsConstructor
+
 public class UserRegistrationController {
     private final AuthenticationService authenticationService;
     private final UserMapper userMapper;
-
-    public UserRegistrationController(AuthenticationService authenticationService,
-                                      UserMapper userMapper) {
-        this.authenticationService = authenticationService;
-        this.userMapper = userMapper;
-    }
 
     @PostMapping("/register")
     public void register(@RequestBody RegistrationDto registrationDto) {

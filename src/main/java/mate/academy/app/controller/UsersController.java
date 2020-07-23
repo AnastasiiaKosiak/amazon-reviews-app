@@ -2,6 +2,8 @@ package mate.academy.app.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import lombok.AllArgsConstructor;
 import mate.academy.app.entity.dto.UserDto;
 import mate.academy.app.mapper.UserMapper;
 import mate.academy.app.service.AmazonUserService;
@@ -12,14 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
+@AllArgsConstructor
 public class UsersController {
     private final AmazonUserService amazonUserService;
     private final UserMapper userMapper;
-
-    public UsersController(AmazonUserService amazonUserService, UserMapper userMapper) {
-        this.amazonUserService = amazonUserService;
-        this.userMapper = userMapper;
-    }
 
     @GetMapping("/most-active")
     public List<UserDto> getMostActiveUsers(@RequestParam int pageLimit, @RequestParam int offset) {

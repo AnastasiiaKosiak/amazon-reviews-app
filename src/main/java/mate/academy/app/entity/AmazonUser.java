@@ -1,6 +1,5 @@
 package mate.academy.app.entity;
 
-
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;

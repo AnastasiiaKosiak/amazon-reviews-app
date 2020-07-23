@@ -1,6 +1,8 @@
 package mate.academy.app.controller;
 
 import java.util.List;
+
+import lombok.AllArgsConstructor;
 import mate.academy.app.entity.FoodItem;
 import mate.academy.app.entity.Review;
 import mate.academy.app.entity.User;
@@ -24,21 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/reviews")
+@AllArgsConstructor
+
 public class ReviewsController {
     private final ReviewService reviewService;
     private final UserService userService;
     private final FoodItemService foodItemService;
     private final ReviewMapper reviewMapper;
-
-    public ReviewsController(ReviewService reviewService,
-                             UserService userService,
-                             FoodItemService foodItemService,
-                             ReviewMapper reviewMapper) {
-        this.reviewService = reviewService;
-        this.userService = userService;
-        this.foodItemService = foodItemService;
-        this.reviewMapper = reviewMapper;
-    }
 
     @GetMapping("/popular-words")
     List<String> getMostUsedWordsFromReviews(@RequestParam int pageLimit) {
