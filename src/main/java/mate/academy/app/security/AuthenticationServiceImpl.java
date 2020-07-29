@@ -33,7 +33,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public User login(String name, String password) {
         User user = userService.findByName(name);
         String securePassword = encoder.encode(password);
-        if (user == null || user.getPassword().equals(securePassword)) {
+        if (user == null || encoder.matches(securePassword, user.getPassword())) {
             throw new RuntimeException("Invalid name or password");
         }
         return user;
