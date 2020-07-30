@@ -2,8 +2,6 @@ package mate.academy.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,11 +12,12 @@ import lombok.Data;
 @Data
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private AmazonUser amazonUser;
     @ManyToOne
     private FoodItem item;
     @Column(name = "helpfulness_num")
@@ -29,6 +28,6 @@ public class Review {
     private Long time;
     @Column(name = "summary")
     private String reviewSummary;
-    @Column(name = "text")
+    @Column(length = 50000, columnDefinition = "text")
     private String reviewText;
 }
